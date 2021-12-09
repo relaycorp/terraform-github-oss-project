@@ -1,0 +1,8 @@
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ci:
+    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
