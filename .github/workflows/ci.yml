@@ -7,3 +7,7 @@ on:
 jobs:
   ci:
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
+
+  release:
+    needs: ci
+    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-release.yml@main
