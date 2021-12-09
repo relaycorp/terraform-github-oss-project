@@ -5,6 +5,7 @@ variable "description" {
   description = "GitHub project description"
 }
 variable "homepage_url" {
+  default     = ""
   description = "GitHub project homepage"
 }
 variable "licence" {
