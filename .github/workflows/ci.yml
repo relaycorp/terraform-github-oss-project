@@ -16,6 +16,8 @@ jobs:
       - module-checks
       - example-self-checks
     runs-on: ubuntu-latest
+    steps:
+      - run: "echo We have to define at least one step, even if it is not needed."
 
   release:
     needs: ci
