@@ -41,7 +41,7 @@ resource "github_branch_protection_v3" "main" {
   required_status_checks {
     strict = true
     contexts = concat(
-      var.require_semantic_releases ? ["action-semantic-pull-request"] : [],
+      var.require_semantic_releases ? ["pr-ci / semantic-pr-title"] : [],
       var.ci_contexts,
       ["license/cla"]
     )
