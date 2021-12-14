@@ -1,0 +1,2 @@
+examples/self/.terraform
+examples/self/terraform.tfstate*
