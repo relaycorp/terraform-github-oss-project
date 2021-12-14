@@ -5,8 +5,17 @@ on:
     branches: [main]
 
 jobs:
-  ci:
+  module-checks:
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
+  example-self-checks:
+    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
+    with:
+      path: examples/self
+  ci:
+    needs:
+      - module-checks
+      - example-self-checks
+    runs-on: ubuntu-latest
 
   release:
     needs: ci
