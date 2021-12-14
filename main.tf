@@ -36,7 +36,7 @@ resource "github_repository" "main" {
 
 resource "github_branch_protection" "main" {
   repository_id = github_repository.main.node_id
-  pattern       = "^${var.main_branch}$"
+  pattern       = var.main_branch
 
   required_linear_history         = true
   require_conversation_resolution = true
