@@ -34,9 +34,12 @@ resource "github_repository" "main" {
   }
 }
 
-resource "github_branch_protection_v3" "main" {
-  repository = github_repository.main.name
-  branch     = var.main_branch
+resource "github_branch_protection" "main" {
+  repository_id = github_repository.main.node_id
+  pattern       = "^${var.main_branch}$"
+
+  required_linear_history         = true
+  require_conversation_resolution = true
 
   required_status_checks {
     strict = true
@@ -52,12 +55,10 @@ resource "github_branch_protection_v3" "main" {
     required_approving_review_count = 1
   }
 
-  restrictions {
-    apps = [
-      "github-actions", # Allow @semantic-release/github to create GH releases
-      "kodiakhq",       # Allow Kodiak to merge PRs
-    ]
-  }
+  push_restrictions = [
+    local.github_actions_app_node_id, # Allow @semantic-release/github to create GH releases
+    local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
+  ]
 }
 
 resource "github_issue_label" "kodiak_automerge" {
