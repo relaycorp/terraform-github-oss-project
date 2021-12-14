@@ -10,10 +10,12 @@ resource "github_repository" "main" {
   allow_merge_commit = false
   allow_rebase_merge = false
 
+  allow_auto_merge       = true
   delete_branch_on_merge = true
-  has_issues             = true
-  has_downloads          = false
-  auto_init              = true
+
+  has_issues    = true
+  has_downloads = false
+  auto_init     = true
 
   vulnerability_alerts = true
 
