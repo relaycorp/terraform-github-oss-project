@@ -11,14 +11,16 @@ jobs:
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
     with:
       path: examples/self
-  ci:
-    needs:
-      - module-checks
-      - example-self-checks
-    runs-on: ubuntu-latest
-    steps:
-      - run: "echo We have to define at least one step, even if it is not needed."
 
   release:
     needs: ci
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-release.yml@main
+
+  ci:
+    needs:
+      - module-checks
+      - example-self-checks
+      - release
+    runs-on: ubuntu-latest
+    steps:
+      - run: "echo Success"
