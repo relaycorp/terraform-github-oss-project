@@ -13,14 +13,13 @@ jobs:
       path: examples/self
 
   release:
-    needs: ci
-    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-release.yml@main
-
-  ci:
     needs:
       - module-checks
       - example-self-checks
-      - release
+    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-release.yml@main
+
+  ci:
+    needs: release
     runs-on: ubuntu-latest
     steps:
       - run: "echo Success"
