@@ -26,7 +26,7 @@ variable "ci_contexts" {
   description = "Required CI contexts for PRs to merged in the main branch"
 }
 
-variable "require_semantic_releases" {
+variable "support_releases" {
   default     = true
   description = "Whether the project uses Semantic Releases"
 }
