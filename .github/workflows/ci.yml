@@ -7,6 +7,10 @@ on:
 jobs:
   ci-module:
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
+  ci-android-app:
+    uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
+    with:
+      path: modules/android-app-ci
   ci-example:
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-ci.yml@main
     with:
