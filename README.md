@@ -8,4 +8,4 @@ Use the module at [`examples/self`](./examples/self) to test changes to the root
 
 ## Third-party contributions
 
-Since this module is meant to be 100% specific to Relaycorp, we will only accept security fixes from third parties. Other enhancements or bug fixes won't be accepted. If you see anything you like here, feel free to use it under the terms of the [licence](https://github.com/relaycorp/terraform-github-oss-project/blob/main/LICENSE). Backwards compatibility isn't guaranteed.
+Since this module is meant to be 100% specific to Relaycorp, we will only accept bug fixes from third parties. New features won't be accepted. If you see anything you like here, feel free to use it under the terms of the [licence](https://github.com/relaycorp/terraform-github-oss-project/blob/main/LICENSE). Backwards compatibility isn't guaranteed.
