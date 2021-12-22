@@ -63,6 +63,17 @@ resource "github_branch_protection" "main" {
   ]
 }
 
+resource "github_branch_protection" "gh_pages" {
+  repository_id = github_repository.main.node_id
+  pattern       = "gh-pages"
+
+  enforce_admins = true
+
+  push_restrictions = [
+    local.github_actions_app_node_id, # Allow @github-actions to push commits
+  ]
+}
+
 resource "github_issue_label" "kodiak_automerge" {
   // https://kodiakhq.com/
   repository  = github_repository.main.name
