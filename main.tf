@@ -64,8 +64,10 @@ resource "github_branch_protection" "main" {
 }
 
 resource "github_branch_protection" "gh_pages" {
+  count = var.pages_source_path != null && var.pages_source_branch != var.main_branch ? 1 : 0
+
   repository_id = github_repository.main.node_id
-  pattern       = "gh-pages"
+  pattern       = var.pages_source_branch
 
   enforce_admins = true
 
