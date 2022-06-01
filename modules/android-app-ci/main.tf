@@ -39,6 +39,12 @@ resource "github_actions_secret" "ci_service_account" {
   plaintext_value = base64decode(google_service_account_key.github_actions_ci.private_key)
 }
 
+resource "github_dependabot_secret" "ci_service_account" {
+  repository      = var.gh_repo_name
+  secret_name     = "CI_GCP_SERVICE_ACCOUNT"
+  plaintext_value = base64decode(google_service_account_key.github_actions_ci.private_key)
+}
+
 resource "github_actions_secret" "publisher_service_account" {
   repository      = var.gh_repo_name
   secret_name     = "PUBLISHER_GCP_SERVICE_ACCOUNT"
