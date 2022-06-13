@@ -4,7 +4,6 @@ resource "github_repository" "main" {
   homepage_url = var.homepage_url
   visibility   = "public"
   topics       = var.topics
-  archived     = var.is_archived
 
   // Only allow squash merges
   allow_merge_commit = false
