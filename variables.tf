@@ -31,11 +31,6 @@ variable "support_releases" {
   description = "Whether the project uses Semantic Releases"
 }
 
-variable "is_archived" {
-  default     = false
-  description = "Whether the project is archived"
-}
-
 variable "pages_source_path" {
   default     = null
   type        = string
