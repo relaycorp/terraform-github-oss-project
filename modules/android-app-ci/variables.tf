@@ -6,7 +6,7 @@ variable "global_gcp_project_name" {
 variable "gcp_project_name" {
   description = "Name of GCP project dedicated to the Android app"
 }
-variable "gcp_project_additional_editors" {
+variable "firebase_test_lab_viewers" {
   type    = list(string)
   default = []
 }

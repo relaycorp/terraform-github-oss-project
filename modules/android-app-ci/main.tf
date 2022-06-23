@@ -27,10 +27,19 @@ resource "google_service_account_key" "github_actions_publisher" {
 resource "google_project_iam_binding" "firebase_editors" {
   project = var.gcp_project_name
   role    = "roles/editor"
-  members = concat(
-    ["serviceAccount:${google_service_account.ci.email}"],
-    var.gcp_project_additional_editors
-  )
+  members = ["serviceAccount:${google_service_account.ci.email}"]
+}
+
+// See https://firebase.google.com/docs/projects/iam/permissions#test-lab
+resource "google_project_iam_binding" "firebase_test_lab_viewer" {
+  project = var.gcp_project_name
+  role    = "roles/cloudtestservice.testViewer"
+  members = var.firebase_test_lab_viewers
+}
+resource "google_project_iam_binding" "firebase_analytics_viewer" {
+  project = var.gcp_project_name
+  role    = "roles/firebase.analyticsViewer"
+  members = var.firebase_test_lab_viewers
 }
 
 resource "github_actions_secret" "ci_service_account" {
