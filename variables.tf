@@ -30,6 +30,10 @@ variable "support_releases" {
   default     = true
   description = "Whether the project uses Semantic Releases"
 }
+variable "support_issues" {
+  default     = true
+  description = "Whether the project should allow issues"
+}
 
 variable "pages_source_path" {
   default     = null

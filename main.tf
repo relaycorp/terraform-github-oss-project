@@ -12,7 +12,7 @@ resource "github_repository" "main" {
   allow_auto_merge       = false
   delete_branch_on_merge = true
 
-  has_issues    = true
+  has_issues    = var.support_issues
   has_downloads = false
   auto_init     = true
 
