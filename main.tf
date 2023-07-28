@@ -35,7 +35,7 @@ resource "github_repository" "main" {
   }
 }
 
-resource "github_branch_default" "main"{
+resource "github_branch_default" "main" {
   repository = github_repository.main.name
   branch     = var.main_branch
   rename     = true
