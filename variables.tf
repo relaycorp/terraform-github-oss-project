@@ -34,6 +34,10 @@ variable "support_issues" {
   default     = true
   description = "Whether the project should allow issues"
 }
+variable "support_discussions" {
+  default     = false
+  description = "Whether the project should allow discussions"
+}
 
 variable "pages_source_path" {
   default     = null
