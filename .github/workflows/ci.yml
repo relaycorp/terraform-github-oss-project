@@ -19,5 +19,6 @@ jobs:
   release:
     needs:
       - ci-module
+      - ci-android-app
       - ci-example
     uses: relaycorp/shared-workflows/.github/workflows/tfmodule-release.yml@main
