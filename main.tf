@@ -35,12 +35,6 @@ resource "github_repository" "main" {
   }
 }
 
-resource "github_branch_default" "main" {
-  repository = github_repository.main.name
-  branch     = var.main_branch
-  rename     = true
-}
-
 resource "github_branch_protection" "main" {
   repository_id = github_repository.main.node_id
   pattern       = var.main_branch
