@@ -59,6 +59,7 @@ resource "github_branch_protection" "main" {
   }
 
   restrict_pushes {
+    blocks_creations = true
     push_allowances = [
       local.github_actions_app_node_id, # Allow @semantic-release/github to create GH releases
       local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
@@ -75,6 +76,7 @@ resource "github_branch_protection" "gh_pages" {
   enforce_admins = true
 
   restrict_pushes {
+    blocks_creations = false
     push_allowances = [
       local.github_actions_app_node_id, # Allow @github-actions to push commits
     ]
