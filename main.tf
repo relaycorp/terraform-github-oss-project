@@ -58,10 +58,12 @@ resource "github_branch_protection" "main" {
     required_approving_review_count = 1
   }
 
-  push_restrictions = [
-    local.github_actions_app_node_id, # Allow @semantic-release/github to create GH releases
-    local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
-  ]
+  restrict_pushes {
+    push_allowances = [
+      local.github_actions_app_node_id, # Allow @semantic-release/github to create GH releases
+      local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
+    ]
+  }
 }
 
 resource "github_branch_protection" "gh_pages" {
@@ -72,9 +74,11 @@ resource "github_branch_protection" "gh_pages" {
 
   enforce_admins = true
 
-  push_restrictions = [
-    local.github_actions_app_node_id, # Allow @github-actions to push commits
-  ]
+  restrict_pushes {
+    push_allowances = [
+      local.github_actions_app_node_id, # Allow @github-actions to push commits
+    ]
+  }
 }
 
 resource "github_issue_label" "kodiak_automerge" {
