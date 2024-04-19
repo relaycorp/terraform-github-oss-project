@@ -73,12 +73,11 @@ resource "github_branch_protection" "gh_pages" {
   repository_id = github_repository.main.node_id
   pattern       = var.pages_source_branch
 
-  enforce_admins = true
-
   restrict_pushes {
     blocks_creations = false
     push_allowances = [
       local.github_actions_app_node_id, # Allow @github-actions to push commits
+      local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
     ]
   }
 }
