@@ -21,13 +21,10 @@ resource "github_repository" "main" {
   vulnerability_alerts = true
 
   dynamic "pages" {
-    for_each = var.pages_source_path == null ? [] : [1]
+    for_each = var.pages_enabled ? [1] : []
 
     content {
-      source {
-        branch = var.pages_source_branch
-        path   = var.pages_source_path
-      }
+      build_type = "workflow"
     }
   }
 
@@ -62,21 +59,6 @@ resource "github_branch_protection" "main" {
     blocks_creations = true
     push_allowances = [
       local.github_actions_app_node_id, # Allow @semantic-release/github to create GH releases
-      local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
-    ]
-  }
-}
-
-resource "github_branch_protection" "gh_pages" {
-  count = var.pages_source_path != null && var.pages_source_branch != var.main_branch ? 1 : 0
-
-  repository_id = github_repository.main.node_id
-  pattern       = var.pages_source_branch
-
-  restrict_pushes {
-    blocks_creations = false
-    push_allowances = [
-      local.github_actions_app_node_id, # Allow @github-actions to push commits
       local.kodiakhq_app_node_id,       # Allow Kodiak to merge PRs
     ]
   }

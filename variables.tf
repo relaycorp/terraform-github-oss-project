@@ -39,13 +39,8 @@ variable "support_discussions" {
   description = "Whether the project should allow discussions"
 }
 
-variable "pages_source_path" {
-  default     = null
-  type        = string
-  description = "The page to the source of the GitHub Pages website"
-}
-variable "pages_source_branch" {
-  default     = "gh-pages"
-  type        = string
-  description = "The branch containing the GitHub Pages website"
+variable "pages_enabled" {
+  default     = true
+  type        = bool
+  description = "Whether the project should use GitHub Pages"
 }
