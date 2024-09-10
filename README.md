@@ -2,6 +2,8 @@
 
 This module is used by the Relaycorp team to manage their open source projects (mostly on GitHub).
 
+See also [the module for closed-source projects](https://github.com/relaycorp/terraform-github-closed-source).
+
 ## Development
 
 Use the module at [`examples/self`](./examples/self) to test changes to the root module.
